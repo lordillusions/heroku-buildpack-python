@@ -1,6 +1,10 @@
 if [ ! "$SKIP_PIP_INSTALL" ]; then
 
     # Install dependencies with Pip.
+    puts-step "C_INCLUDE_PATH: $C_INCLUDE_PATH"
+    puts-step "CPLUS_INCLUDE_PATH: $CPLUS_INCLUDE_PATH"
+    puts-step "LIBRARY_PATH: $LIBRARY_PATH"
+    puts-step "INCLUDE_PATH: $INCLUDE_PATH"
     puts-step "Installing requirements with pip"
 
     set +e
