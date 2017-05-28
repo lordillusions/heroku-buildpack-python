@@ -73,15 +73,6 @@ WEB_CONCURRENCY_PROFILE_PATH="$BUILD_DIR/.profile.d/WEB_CONCURRENCY.sh"
 # We'll need to send these statics to other scripts we `source`.
 export BUILD_DIR CACHE_DIR BIN_DIR PROFILE_PATH EXPORT_PATH
 
-#apt buildpack
-declare -x CPATH="/tmp/staged/app/.apt/usr/include:"
-declare -x CPPPATH="/tmp/staged/app/.apt/usr/include:"
-declare -x INCLUDE_PATH="/tmp/staged/app/.apt/usr/include:"
-declare -x PATH="/tmp/staged/app/.apt/usr/bin:/bin:/usr/bin"
-declare -x LD_LIBRARY_PATH="/tmp/staged/app/.apt/usr/lib/x86_64-linux-gnu:/tmp/staged/app/.apt/usr/lib/i386-linux-gnu:/tmp/staged/app/.apt/usr/lib:"
-declare -x LIBRARY_PATH="/tmp/staged/app/.apt/usr/lib/x86_64-linux-gnu:/tmp/staged/app/.apt/usr/lib/i386-linux-gnu:/tmp/staged/app/.apt/usr/lib:"
-declare -x PKG_CONFIG_PATH="/tmp/staged/app/.apt/usr/lib/x86_64-linux-gnu/pkgconfig:/tmp/staged/app/.apt/usr/lib/i386-linux-gnu/pkgconfig:/tmp/staged/app/.apt/usr/lib/pkgconfig:"
-
 # Prepend proper environment variables for Python use.
 export PATH=/app/.heroku/python/bin:/app/.heroku/vendor/bin:$PATH
 export C_INCLUDE_PATH=/app/.heroku/vendor/include:/app/.heroku/python/include:$C_INCLUDE_PATH
@@ -91,6 +82,18 @@ export LD_LIBRARY_PATH=/app/.heroku/vendor/lib:/app/.heroku/python/lib:$LD_LIBRA
 export PKG_CONFIG_PATH=/app/.heroku/vendor/lib/pkg-config:/app/.heroku/python/lib/pkg-config:$PKG_CONFIG_PATH
 export PYTHONUNBUFFERED=1
 export LANG=en_US.UTF-8
+
+# Add heroku-buildpack-apt paths
+export PATH=$PATH:/tmp/staged/app/.apt/usr/bin
+export C_INCLUDE_PATH=$C_INCLUDE_PATH:/tmp/staged/app/.apt/usr/include:/tmp/staged/app/.apt/usr/include/xmlsec1
+export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:/tmp/staged/app/.apt/usr/include:/tmp/staged/app/.apt/usr/include/xmlsec1
+export LIBRARY_PATH=$LIBRARY_PATH:/tmp/staged/app/.apt/usr/lib/x86_64-linux-gnu:/tmp/staged/app/.apt/usr/lib/i386-linux-gnu:/tmp/staged/app/.apt/usr/lib
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/tmp/staged/app/.apt/usr/lib/x86_64-linux-gnu:/tmp/staged/app/.apt/usr/lib/i386-linux-gnu:/tmp/staged/app/.apt/usr/lib
+export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/tmp/staged/app/.apt/usr/lib/x86_64-linux-gnu/pkgconfig:/tmp/staged/app/.apt/usr/lib/i386-linux-gnu/pkgconfig:/tmp/staged/app/.apt/usr/lib/pkgconfig
+export INCLUDE_PATH=/tmp/staged/app/.apt/usr/include:/tmp/staged/app/.apt/usr/include/xmlsec1
+export CPATH=/tmp/staged/app/.apt/usr/include
+export CPPPATH=/tmp/staged/app/.apt/usr/include
+export SWIG_LIB=/tmp/staged/app/.apt/usr/share/swig2.0/
 
 # Switch to the repo's context.
 cd $BUILD_DIR
