@@ -1,9 +1,7 @@
 
+# Heroku Custom Buildpack: Apt + Python (Using Multi Buildpack Support)
+
 This is a custom Build on top of Heroku Python using Heroku Multi Buildpack and Heroku APT to bring libxmlsec1 support and making compatible with CloudFoundry Diego Engine + Python 2.7.13
-
-# Heroku Buildpack: Python
-
-[![Build Status](https://travis-ci.org/heroku/heroku-buildpack-python.svg?branch=master)](https://travis-ci.org/heroku/heroku-buildpack-python)
 
 This is a custom [Heroku buildpack](https://devcenter.heroku.com/articles/buildpacks) for Python apps, powered by [pip](https://pip.pypa.io/) and other excellent software.
 
