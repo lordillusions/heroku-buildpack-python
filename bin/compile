@@ -84,15 +84,15 @@ export PYTHONUNBUFFERED=1
 export LANG=en_US.UTF-8
 
 # Add heroku-buildpack-apt paths
-export PATH=$PATH:/tmp/staged/app/.apt/usr/bin
-export C_INCLUDE_PATH=$C_INCLUDE_PATH:/tmp/staged/app/.apt/usr/include:/tmp/staged/app/.apt/usr/include/xmlsec1
-export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:/tmp/staged/app/.apt/usr/include:/tmp/staged/app/.apt/usr/include/xmlsec1
-export LIBRARY_PATH=$LIBRARY_PATH:/tmp/staged/app/.apt/usr/lib/x86_64-linux-gnu:/tmp/staged/app/.apt/usr/lib/i386-linux-gnu:/tmp/staged/app/.apt/usr/lib
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/tmp/staged/app/.apt/usr/lib/x86_64-linux-gnu:/tmp/staged/app/.apt/usr/lib/i386-linux-gnu:/tmp/staged/app/.apt/usr/lib
+export PATH=$PATH:/tmp/staged/app/.apt/usr/bin$( find /tmp/staged/app/.apt/usr/bin/ -type d -printf ":%p" )
+export C_INCLUDE_PATH=$C_INCLUDE_PATH:/tmp/staged/app/.apt/usr/include$( find /tmp/staged/app/.apt/usr/include/ -type d -printf ":%p" )
+export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:/tmp/staged/app/.apt/usr/include$( find /tmp/staged/app/.apt/usr/include/ -type d -printf ":%p" )
+export LIBRARY_PATH=$LIBRARY_PATH:/tmp/staged/app/.apt/usr/lib/x86_64-linux-gnu:/tmp/staged/app/.apt/usr/lib/i386-linux-gnu:/tmp/staged/app/.apt/usr/lib$( find /tmp/staged/app/.apt/usr/lib/ -type d -printf ":%p" )
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/tmp/staged/app/.apt/usr/lib/x86_64-linux-gnu:/tmp/staged/app/.apt/usr/lib/i386-linux-gnu:/tmp/staged/app/.apt/usr/lib$( find /tmp/staged/app/.apt/usr/lib/ -type d -printf ":%p" )
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/tmp/staged/app/.apt/usr/lib/x86_64-linux-gnu/pkgconfig:/tmp/staged/app/.apt/usr/lib/i386-linux-gnu/pkgconfig:/tmp/staged/app/.apt/usr/lib/pkgconfig
-export INCLUDE_PATH=/tmp/staged/app/.apt/usr/include:/tmp/staged/app/.apt/usr/include/xmlsec1
-export CPATH=/tmp/staged/app/.apt/usr/include
-export CPPPATH=/tmp/staged/app/.apt/usr/include
+export INCLUDE_PATH=/tmp/staged/app/.apt/usr/include$( find /tmp/staged/app/.apt/usr/include/ -type d -printf ":%p" )
+export CPATH=/tmp/staged/app/.apt/usr/include$( find /tmp/staged/app/.apt/usr/include/ -type d -printf ":%p" )
+export CPPPATH=/tmp/staged/app/.apt/usr/include$( find /tmp/staged/app/.apt/usr/include/ -type d -printf ":%p" )
 export SWIG_LIB=/tmp/staged/app/.apt/usr/share/swig2.0/
 
 # Switch to the repo's context.
