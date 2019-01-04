@@ -86,6 +86,7 @@ export LANG=en_US.UTF-8
 #copy db2 license for license folder if have
 if [[ -f /app/db2consv_zs.lic ]]; then
   cp /app/db2consv_zs.lic /app/.heroku/python/lib/python2.7/site-packages/clidriver/license/ &> /dev/null || true
+  puts-warn 'DB2 License found and added to python instalation'
 fi
 
 # Add heroku-buildpack-apt paths
