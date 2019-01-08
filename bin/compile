@@ -83,12 +83,6 @@ export PKG_CONFIG_PATH=/app/.heroku/vendor/lib/pkg-config:/app/.heroku/python/li
 export PYTHONUNBUFFERED=1
 export LANG=en_US.UTF-8
 
-#copy db2 license for license folder if have
-if [[ -f /app/db2consv_zs.lic ]]; then
-  cp /app/db2consv_zs.lic /app/.heroku/python/lib/python2.7/site-packages/clidriver/license/ &> /dev/null || true
-  puts-warn 'DB2 License found and added to python instalation'
-fi
-
 # Add heroku-buildpack-apt paths
 export PATH=$PATH:/tmp/staged/app/.apt/usr/bin$( find /tmp/staged/app/.apt/usr/bin/ -type d -printf ":%p" )
 export C_INCLUDE_PATH=$C_INCLUDE_PATH:/tmp/staged/app/.apt/usr/include$( find /tmp/staged/app/.apt/usr/include/ -type d -printf ":%p" )
@@ -103,6 +97,12 @@ export SWIG_LIB=/tmp/staged/app/.apt/usr/share/swig2.0/
 
 # Switch to the repo's context.
 cd $BUILD_DIR
+
+#copy db2 license for license folder if have
+if [[ -f db2consv_zs.lic ]]; then
+  cp $BUILD_DIR/db2consv_zs.lic /app/.heroku/python/lib/python2.7/site-packages/clidriver/license/ &> /dev/null || true
+  puts-warn 'DB2 License found and added to python instalation'
+fi
 
 # Warn for lack of Procfile.
 if [[ ! -f Procfile ]]; then
