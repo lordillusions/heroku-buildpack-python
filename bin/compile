@@ -114,7 +114,6 @@ mkdir -p .heroku
 #copy db2 license for license folder if have
 if [[ -f db2consv_zs.lic ]]; then
   cp -p $BUILD_DIR/db2consv_zs.lic $CACHE_DIR/.heroku/python/lib/python2.7/site-packages/clidriver/license/ &> /dev/null || true
-  ls -aR $CACHE_DIR/.heroku/python/
   puts-warn 'DB2 License found and added to python instalation'
 fi
 
