@@ -110,13 +110,6 @@ mkdir -p $CACHE_DIR
 # Restore old artifacts from the cache.
 mkdir -p .heroku
 
-
-#copy db2 license for license folder if have
-if [[ -f db2consv_zs.lic ]]; then
-  cp -p $BUILD_DIR/db2consv_zs.lic $CACHE_DIR/.heroku/python/lib/python2.7/site-packages/clidriver/license/ &> /dev/null || true
-  puts-warn 'DB2 License found and added to python instalation'
-fi
-
 cp -R $CACHE_DIR/.heroku/python .heroku/ &> /dev/null || true
 cp -R $CACHE_DIR/.heroku/python-stack .heroku/ &> /dev/null || true
 cp -R $CACHE_DIR/.heroku/python-version .heroku/ &> /dev/null || true
